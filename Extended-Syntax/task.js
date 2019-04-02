@@ -1,4 +1,4 @@
-
+"use strict";
 
 function calculateQuadraticEquation(){
     let a = +window.a.value;
@@ -10,9 +10,21 @@ function calculateQuadraticEquation(){
     span.textContent = "х = "+result;
 }
 
-function getResult(a,b,c){
-    // код для задачи №1 писать здесь
-    //return x;
+function getResult(a,b,c) {
+    let discriminant = (b * b) - 4 * a * c;
+    let x = [];
+
+    if (discriminant < 0) {
+        console.log("Корня нет");
+    } else if (discriminant === 0) {
+        x = -b / (2 * a);
+        console.log(`Корень 1, x = ${x}`)
+    } else {
+        x[0] = (-b - Math.sqrt(d)) / (2 * a);
+        x[1] = (-b + Math.sqrt(d)) / (2 * a);
+        console.log(`Корня 2, x1 = ${x[0]} и х2 = ${x[1]}`);
+    }
+    return x;
 }
 
 function calculateDrinkTask(){
@@ -22,19 +34,32 @@ function calculateDrinkTask(){
     window.drink.textContent = drink;
 }
 
-function askDrink(name,dateOfBirthday){
-    // код для задачи №2 писать здесь
-    //console.log(result)
-    //return result;
+function askDrink(name, dateOfBirthday){
+    let ages = (new Date().getFullYear() - dateOfBirthday.getFullYear());
+
+    if (ages >= 18) {
+        ages = `Не желаете ли олд-фэшн, ${name}?`;
+        console.log(ages);
+    } else {
+        ages = `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
+        console.log(ages);
+    }
+    
+    return ages;
 }
 
+
 function calculateAverageRating(){
-    let marks = window.marks.value.split("").map(Number).filter((n)=> !isNaN(n) && n > 0);
+    let marks = window.marks.value.split("").map(Number);
     let averageMark = getAverageMark(marks);
     window.averageMark.textContent = averageMark;
 }
 
 function getAverageMark(marks){
-    // код для задачи №3 писать здесь
-    //return averageMark;
+
+    let averageMark = 0;
+        for (let i = 0; i < marks.length; i++) {
+            averageMark = averageMark + marks[i];
+        }
+    return averageMark / 5;
 }
