@@ -29,16 +29,12 @@ getDamage() {
 }
 
 isBroken() {
-    if (this.durability == 0) {
-      return true;
-    } else {
-      return false;
-    }
-}
+  return this.durability === 0; 
+  }
 
 }
 
-const hand = new Weapon("Рука",1,Infinity,1);
+/*const hand = new Weapon("Рука",1,Infinity,1);
 const bow = new Weapon("Лук",10,200,3);
 const sword = new Weapon("Меч",25,500,1);
 const knife = new Weapon("Нож",5,300,1);
@@ -53,72 +49,72 @@ console.log(bow.durability);
 
 console.log (bow.getDamage());
 
-console.log(bow.isBroken());
-
+console.log(bow.isBroken());*/
 
 
 class Hand extends Weapon {
-  constructor(attack, durability, range) {
-    super(attack, durability, range);
-    this.name = 'Рука';
+  constructor(name,attack,durability,range){
+    super ('Рука', 1, Infinity, 1)
   }
-}
-
+} 
 
 class Bow extends Weapon {
-  constructor(attack, durability, range) {
-    super(attack, durability, range);
-    this.name = 'Лук';
+  constructor(name,attack,durability,range){
+    super ('Лук',10, 200, 3 ) 
   }
 }
-
 
 class Sword extends Weapon {
-  constructor(attack, durability, range) {
-    super(attack, durability, range);
-    this.name = 'Меч';
+  constructor(name,attack,durability,range){
+    super ('Меч', 25, 500, 1)
   }
 }
-
 
 class Knife extends Weapon {
-  constructor(attack, durability, range) {
-    super(attack, durability, range);
-    this.name = 'Нож';
+  constructor(name,attack,durability,range){
+    super ('Нож', 5, 300, 1)
   }
 }
 
-
-class Staff extends Weapon {
-  constructor(attack, durability, range) {
-    super(attack, durability, range);
-    this.name = 'Посох';
+class Staff extends Weapon{
+  constructor(name,attack,durability,range){
+    super ('Посох', 8, 300, 2)
   }
 }
-
 
 class LongBow extends Bow {
-  constructor(attack, durability, range) {
-    super(attack, durability, range);
-    this.name = 'Длинный Лук';
+  constructor(name,attack,durability,range) {
+    super();
+    this.name = 'Длинный лук';
+    this.attack = 15;
+    this.range = 4;
   }
 }
-
 
 class Axe extends Sword {
-  constructor(attack, durability, range) {
-    super(attack, durability, range);
+  constructor(name,attack,durability,range) {
+    super();
     this.name = 'Секира';
-  }
+    this.durability = 800;
+    this.attack = 27;
+    this.firstDurability = this.durability
+    }
 }
-
 
 class StaffStorm extends Staff {
-  constructor(attack, durability, range) {
-    super(attack, durability, range);
+  constructor(name,attack,durability,range) {
+    super();
     this.name = 'Посох Бури';
-  }
+    this.attack = 10;
+    this.range = 3;
+    }  
 }
 
-
-console.log(staff)
+const hand = new Hand();
+const bow = new Bow();
+const sword = new Sword();
+const knife = new Knife();
+const staff = new Staff ();
+const longBow = new LongBow() ;
+const axe = new Axe();
+const staffStorm = new StaffStorm();
